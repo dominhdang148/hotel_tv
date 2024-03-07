@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <title>Document</title>
+        <style>
+        /* Custom CSS for selected effect */
+        .service-item.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .service-item.active:hover {
+            background-color: #007bff;
+        }
+        #fixed-buttons {
+            position: fixed;
+            top: 50%;
+            right: 10px; /* Adjust as needed */
+            transform: translateY(-50%);
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div id="service-list-container "
+                class="align-items-center  justify-content-center ">
+                <!-- Use Bootstrap list-group component -->
+                <div id="service-list"
+                    class="list-group d-flex flex-row ">
+                    <!-- Add list items dynamically -->
+                </div>
+            </div>
+        </div>
+        <div id="fixed-buttons">
+            <button id="upButton">Up</button>
+            <button id="downButton">Down</button>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script>
+        var serviceListElement = document.getElementById("service-list");
+        var serviceList = [{
+                id: 1,
+                name: 'Spa/Massage/Sauna',
+                imageURL: "https://cdn.diemnhangroup.com/seoulacademy/2022/08/spa-la-gi-1.jpg"
+            },
+            {
+                id: 2,
+                name: 'Gym',
+                imageURL: "https://gymaster.vn/wp-content/uploads/2023/11/section2-1.jpg"
+            },
+            {
+                id: 3,
+                name: 'City Tour',
+                imageURL: "https://vgotravel.com.vn/upload/images/nen%20di%20tour%20hay%20tu%20tuc%20nhung%20trai%20nghiem%20rieng%20biet%20(1).jpg"
+            },
+            {
+                id: 4,
+                name: 'Restaurant',
+                imageURL: "https://vgotravel.com.vn/upload/images/nen%20di%20tour%20hay%20tu%20tuc%20nhung%20trai%20nghiem%20rieng%20biet%20(1).jpg"
+            },
+            {
+                id: 5,
+                name: 'Yoga',
+                imageURL: "https://vgotravel.com.vn/upload/images/nen%20di%20tour%20hay%20tu%20tuc%20nhung%20trai%20nghiem%20rieng%20biet%20(1).jpg"
+            },
+            {
+                id: 6,
+                name: 'Laundry',
+                imageURL: "https://vgotravel.com.vn/upload/images/nen%20di%20tour%20hay%20tu%20tuc%20nhung%20trai%20nghiem%20rieng%20biet%20(1).jpg"
+            },
+            {
+                id: 7,
+                name: '',
+                imageURL: "https://vgotravel.com.vn/upload/images/nen%20di%20tour%20hay%20tu%20tuc%20nhung%20trai%20nghiem%20rieng%20biet%20(1).jpg"
+            },
+            {
+                id: 8,
+                name: 'City Tour',
+                imageURL: "https://vgotravel.com.vn/upload/images/nen%20di%20tour%20hay%20tu%20tuc%20nhung%20trai%20nghiem%20rieng%20biet%20(1).jpg"
+            },
+            {
+                id: 9,
+                name: 'City Tour',
+                imageURL: "https://vgotravel.com.vn/upload/images/nen%20di%20tour%20hay%20tu%20tuc%20nhung%20trai%20nghiem%20rieng%20biet%20(1).jpg"
+            },
+            
+        ];
+
+        var activeServiceIndex = 0; // Index of the currently active service
+
+        function renderServiceList() {
+            var listHtml = "";
+            for (var i = 0; i < serviceList.length; i++) {
+
+                
+                listHtml += `
+            <div class="m-2" style="min-width: ${i===activeServiceIndex?'300px':'200px'}; min-height: ${i===activeServiceIndex?'300px':'200px'};">
+                <a href="#" class=" card list-group-item list-group-item-action service-item ${i === activeServiceIndex ? 'active' : ''}" data-index="${i}" style="min-width: ${i===activeServiceIndex?'300px':'200px'}; min-height: ${i===activeServiceIndex?'300px':'200px'}">
+                    ${serviceList[i].name}
+                </a>
+            </div>
+            `;
+            }
+            serviceListElement.innerHTML = listHtml;
+        }
+
+        renderServiceList();
+
+        // Add click event listener to each service item
+        var serviceItems = document.querySelectorAll('.service-item');
+        serviceItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                activeServiceIndex = parseInt(this.getAttribute('data-index'));
+                renderServiceList();
+            });
+        });
+
+        // Add click event listener to Down button
+        document.getElementById('downButton').addEventListener('click', function() {
+            activeServiceIndex = (activeServiceIndex - 1 + serviceList.length) % serviceList.length;
+            renderServiceList();
+        });
+
+        // Add click event listener to Up button
+        document.getElementById('upButton').addEventListener('click', function() {
+            activeServiceIndex = (activeServiceIndex + 1) % serviceList.length;
+            renderServiceList();
+        });
+    </script>
+    </body>
+</html>
