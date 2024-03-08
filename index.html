@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <div class="container">
@@ -16,21 +16,21 @@
       <div class="cards">
         <label class="card" for="item-1" id="service-1">
           <img src="https://as1.ftcdn.net/v2/jpg/02/94/02/30/1000_F_294023076_mznuW8r4fkTg76nrVPkns8puSgVG2QNf.jpg" alt="service">
-          <p class="service-title">Pool</p>
+          <span hidden class="service-title">Pool</span>
         </label>
         <label class="card" for="item-2" id="service-2">
           <img src="https://www.shutterstock.com/image-photo/balinese-massage-spa-environment-deep-600nw-270515054.jpg" alt="service">
-          <p class="service-title">Spa/Sauna/Massage</p>
+          <span hidden class="service-title">Spa/Sauna/Massage</span>
         </label>
         <label class="card" for="item-3" id="service-3">
           <img src="https://hdfitness.vn/wp-content/uploads/2022/03/giao-an-tap-gym-19-scaled.jpg" alt="service">
-          <p class="service-title">Gym</p>
+          <span hidden class="service-title">Gym</span>
         </label>
       </div>
-    <script>
-        $('input').on('change', function() {
-    $('body').toggleClass('blue');
-  });
-    </script>
+    </div>  
+    
+    
+    <!-- Import JavaScript here -->
+    <script src="js/scripts.js"></script>  
 </body>
 </html>
