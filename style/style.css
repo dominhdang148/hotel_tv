@@ -69,16 +69,17 @@ input[type=radio] {
   aspect-ratio: 1/1;
 }
 
-.info-card__input:checked + .info-card__element{
+.info-card__input:checked+.info-card__element {
   border: 3px solid #4CACD3;
   height: 100%;
   border-radius: 20px;
   position: relative;
 }
-.info-card__input:checked + .info-card__element::after{
+
+.info-card__input:checked+.info-card__element::after {
   content: "";
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   border-radius: 20px;
   right: 0;
@@ -87,7 +88,7 @@ input[type=radio] {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.info-card__input:checked + .info-card__element .info-card__title{
+.info-card__input:checked+.info-card__element .info-card__title {
   font-size: 3rem;
   font-weight: 600;
   color: white;
